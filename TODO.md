@@ -24,15 +24,15 @@
 学習者が触らないファイルを完成させ、ch01 の練習問題が解ける最小の起点を作る。
 学習者が触るのは `Controllers/` `Views/` `Models/` のみ。
 
-- [ ] `src/EmployeeApp/` プロジェクト作成（`dotnet new mvc`・Dapper + Npgsql 追加）
-- [ ] `Program.cs` / `appsettings.json` 整備（PostgreSQL 接続・DI 設定）
-- [ ] `Views/Shared/_Layout.cshtml` 作成（Bootstrap 5・ナビゲーション）
-- [ ] `Models/Employee.cs` 作成（全カラム対応のプロパティ）
-- [ ] `Models/Department.cs` 作成
-- [ ] `Controllers/EmployeeController.cs` の `Index` アクション実装（`SELECT id, name FROM employees ORDER BY id`）
-- [ ] `Views/Employee/Index.cshtml` 作成（id と name だけを表示する最小の一覧）
-- [ ] 動作確認（`dotnet run` で社員一覧が表示されること）
-- [ ] `ch01-start` タグ付け
+- [x] `src/EmployeeApp/` プロジェクト作成（`dotnet new mvc`・Dapper + Npgsql 追加）
+- [x] `Program.cs` / `appsettings.json` 整備（PostgreSQL 接続・DI 設定）
+- [x] `Views/Shared/_Layout.cshtml` 作成（Bootstrap 5・ナビゲーション）
+- [x] `Models/Employee.cs` 作成（全カラム対応のプロパティ）
+- [x] `Models/Department.cs` 作成
+- [x] `Controllers/EmployeeController.cs` の `Index` アクション実装（`SELECT id, name FROM employees ORDER BY id`）
+- [x] `Views/Employee/Index.cshtml` 作成（id と name だけを表示する最小の一覧）
+- [x] 動作確認（`dotnet run` で社員一覧が表示されること）
+- [x] `ch01-start` タグ付け
 
 ---
 
