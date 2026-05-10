@@ -6,9 +6,9 @@
 
 ## Phase 0: プロジェクト基盤
 
-- [ ] `.gitignore` 作成（.NET 標準テンプレート）
-- [ ] `.devcontainer/devcontainer.json` + `Dockerfile` 作成（.NET 8 + PostgreSQL クライアント）
-- [ ] `docs/setup.md` 作成（学習者向け環境構築手順）
+- [x] `.gitignore` 作成（.NET 標準テンプレート）
+- [x] `.devcontainer/devcontainer.json` + `Dockerfile` 作成（.NET 8 + PostgreSQL クライアント）
+- [x] `docs/setup.md` 作成（学習者向け環境構築手順）
 
 ---
 
