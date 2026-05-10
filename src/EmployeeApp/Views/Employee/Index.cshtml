@@ -1,0 +1,25 @@
+@model IEnumerable<EmployeeApp.Models.Employee>
+
+@{
+    ViewData["Title"] = "社員一覧";
+}
+
+<h1>社員一覧</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>氏名</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.Id</td>
+                <td>@employee.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
