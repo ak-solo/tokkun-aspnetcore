@@ -1,0 +1,35 @@
+{
+  "name": "tokkun-asp-dotnet",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "forwardPorts": [5000, 5432],
+  "portsAttributes": {
+    "5000": {
+      "label": "ASP.NET Core",
+      "onAutoForward": "openBrowser"
+    },
+    "5432": {
+      "label": "PostgreSQL",
+      "onAutoForward": "silent"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csdevkit",
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.vscode-dotnet-runtime",
+        "formulahendry.dotnet-test-explorer"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "[csharp]": {
+          "editor.defaultFormatter": "ms-dotnettools.csharp"
+        }
+      }
+    }
+  },
+  "postCreateCommand": "dotnet restore src/EmployeeApp/EmployeeApp.csproj 2>/dev/null || true",
+  "remoteUser": "vscode"
+}
