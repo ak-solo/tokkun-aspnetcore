@@ -1,4 +1,4 @@
-# tokkun-asp-dotnet — 教材作成ガイド
+# tokkun-aspnetcore — 教材作成ガイド
 
 ## プロジェクト概要
 
@@ -84,7 +84,7 @@ employee_projects (employee_id, project_id, role)
 ## ディレクトリ構成（想定）
 
 ```
-tokkun-asp-dotnet/
+tokkun-aspnetcore/
 ├── CLAUDE.md
 ├── .claude/rules/          # Claude Code ルールファイル
 │   ├── chapter-docs.md     # ドキュメント執筆・練習問題設計ルール

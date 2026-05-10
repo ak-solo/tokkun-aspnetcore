@@ -1,4 +1,4 @@
-# TODO — tokkun-asp-dotnet 教材作成タスク
+# TODO — tokkun-aspnetcore 教材作成タスク
 
 各タスク ≈ 1コミット分の作業単位。上から順に依存関係がある。
 
