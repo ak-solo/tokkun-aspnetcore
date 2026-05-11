@@ -1,0 +1,21 @@
+@model EmployeeApp.Models.Employee
+
+@{
+    ViewData["Title"] = "社員編集";
+}
+
+<h1>社員編集</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <div class="mb-3">
+        <label class="form-label">氏名</label>
+        <input type="text" name="name" class="form-control" value="@Model.Name" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">給与</label>
+        <input type="number" name="salary" class="form-control" value="@Model.Salary" />
+    </div>
+    <button type="submit" class="btn btn-primary">更新</button>
+    <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-secondary">キャンセル</a>
+</form>

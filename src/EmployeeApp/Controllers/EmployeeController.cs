@@ -38,4 +38,26 @@ public class EmployeeController : Controller
     {
         return View();
     }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Create(Employee employee)
+    {
+        var id = _db.QuerySingle<int>(
+            @"INSERT INTO employees (name, dept_id, salary, hire_date)
+              VALUES (@Name, @DeptId, @Salary, @HireDate)
+              RETURNING id",
+            employee);
+        return RedirectToAction(nameof(Details), new { id });
+    }
+
+    [HttpGet]
+    public IActionResult Edit(int id)
+    {
+        var employee = _db.QueryFirstOrDefault<Employee>(
+            "SELECT * FROM employees WHERE id = @id",
+            new { id });
+        if (employee == null) return NotFound();
+        return View(employee);
+    }
 }
