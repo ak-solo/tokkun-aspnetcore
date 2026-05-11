@@ -89,15 +89,15 @@
 
 ## Phase 7: ch04「編集」→ `ch05-start` タグ
 
-- [ ] `docs/chapter04.md` 作成（基礎知識 + 練習問題 4〜6 問）
+- [x] `docs/chapter04.md` 作成（基礎知識 + 練習問題 4〜6 問）
   - 基礎：DataAnnotations によるバリデーション・`ModelState.IsValid`・`asp-validation-for` でエラー表示
   - Dapper での UPDATE
   - 問題例：`[Required]` を追加して必須チェック / エラーメッセージを日本語化 / `[Range]` で給与の範囲を制限 / UPDATE 文を実装
-- [ ] ch04 解答コードを実装（ch05 の起点を作る）
+- [x] ch04 解答コードを実装（ch05 の起点を作る）
   - `EmployeeController.Edit`（POST）実装（バリデーション + UPDATE + リダイレクト）
   - `EmployeeController.Delete`（GET）アクション追加（削除確認画面を表示）
   - `Views/Employee/Delete.cshtml` 作成（削除対象の情報と確認ボタンの骨格）
-- [ ] `ch05-start` タグ付け
+- [x] `ch05-start` タグ付け
 
 ---
 
