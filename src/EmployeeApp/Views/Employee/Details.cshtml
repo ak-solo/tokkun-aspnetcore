@@ -1,7 +1,7 @@
 @model EmployeeApp.Models.Employee
 
 @{
-    ViewData["Title"] = "社員詳細";
+    ViewData["Title"] = $"社員詳細 - {Model.Name}";
 }
 
 <h1>社員詳細</h1>
@@ -12,6 +12,18 @@
 
     <dt class="col-sm-2">氏名</dt>
     <dd class="col-sm-10">@Model.Name</dd>
+
+    <dt class="col-sm-2">部署名</dt>
+    <dd class="col-sm-10">@Model.DeptName</dd>
+
+    <dt class="col-sm-2">給与</dt>
+    <dd class="col-sm-10">@Model.Salary</dd>
+
+    <dt class="col-sm-2">入社日</dt>
+    <dd class="col-sm-10">@Model.HireDate</dd>
+
+    <dt class="col-sm-2">上司 ID</dt>
+    <dd class="col-sm-10">@Model.ManagerId</dd>
 </dl>
 
 <a asp-action="Index">一覧に戻る</a>

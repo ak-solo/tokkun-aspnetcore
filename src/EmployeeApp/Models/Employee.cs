@@ -8,4 +8,5 @@ public class Employee
     public decimal? Salary { get; set; }
     public DateOnly? HireDate { get; set; }
     public int? ManagerId { get; set; }
+    public string? DeptName { get; set; }
 }

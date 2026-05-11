@@ -24,9 +24,18 @@ public class EmployeeController : Controller
     public IActionResult Details(int id)
     {
         var employee = _db.QueryFirstOrDefault<Employee>(
-            "SELECT * FROM employees WHERE id = @id",
+            @"SELECT e.*, d.name AS dept_name
+              FROM employees e
+              LEFT JOIN departments d ON e.dept_id = d.id
+              WHERE e.id = @id",
             new { id });
         if (employee == null) return NotFound();
         return View(employee);
+    }
+
+    [HttpGet]
+    public IActionResult Create()
+    {
+        return View();
     }
 }
