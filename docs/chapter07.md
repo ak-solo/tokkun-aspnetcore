@@ -42,11 +42,11 @@ src/EmployeeApp/
 `ProjectController` というクラスを作ると、`Program.cs` の設定により URL が自動的に割り当てられます。
 
 ```
-GET /projects       → ProjectController.Index アクション
-GET /projects/5     → ProjectController.Details アクション（id = 5）
+GET /Project          → ProjectController.Index アクション
+GET /Project/Details/5 → ProjectController.Details アクション（id = 5）
 ```
 
-`EmployeeController` → `/employees` と同じ仕組みです。
+`EmployeeController` → `/Employee` と同じ仕組みです。
 
 ### 参考にできる既存ファイル
 
@@ -68,7 +68,7 @@ GET /projects/5     → ProjectController.Details アクション（id = 5）
 
 ### 問題 7-1：プロジェクト一覧画面を作成する
 
-**URL：** `GET /projects`
+**URL：** `GET /Project`
 
 **表示する項目：**
 
@@ -85,7 +85,7 @@ GET /projects/5     → ProjectController.Details アクション（id = 5）
 **ソート：** 開始日の新しい順（`start_date DESC`）で固定
 
 **その他の要件：**
-- 各行に「詳細」リンクを設置すること（リンク先：`/projects/{id}`）
+- 各行に「詳細」リンクを設置すること（リンク先：`/Project/Details/{id}`）
 - `Views/Shared/_Layout.cshtml` のナビゲーションバーに「プロジェクト」リンクを追加すること
 
 **使用する SQL（概要）：**
@@ -127,18 +127,18 @@ public string Status =>
 > `COUNT` と `GROUP BY` の組み合わせは ch06 で扱いました。
 
 **確認ポイント：**
-- `/projects` にアクセスするとプロジェクト一覧が表示されること
+- `/Project` にアクセスするとプロジェクト一覧が表示されること
 - 「基幹システム刷新」の参加人数が `4` であること
 - 「データ分析基盤構築」の参加人数が `4` であること
 - 「新製品マーケ施策」のステータスが「進行中」であること（`end_date` が `NULL`）
 - 「基幹システム刷新」のステータスが「完了」であること（`end_date` = `2023-12-31`）
-- ナビゲーションバーの「プロジェクト」をクリックすると `/projects` に遷移すること
+- ナビゲーションバーの「プロジェクト」をクリックすると `/Project` に遷移すること
 
 ---
 
 ### 問題 7-2：プロジェクト詳細画面を作成する
 
-**URL：** `GET /projects/{id}`
+**URL：** `GET /Project/Details/{id}`
 
 **表示する項目（プロジェクト基本情報）：**
 
@@ -162,7 +162,7 @@ public string Status =>
 
 **その他の要件：**
 - 存在しない ID へのアクセスには `NotFound()` を返すこと
-- ページ下部に「一覧に戻る」リンクを設置すること（リンク先：`/projects`）
+- ページ下部に「一覧に戻る」リンクを設置すること（リンク先：`/Project`）
 
 **使用する SQL（概要）：**
 
@@ -185,11 +185,11 @@ ORDER BY e.name
 ```
 
 **確認ポイント：**
-- `/projects/1` にアクセスすると「基幹システム刷新」の情報が表示されること
+- `/Project/Details/1` にアクセスすると「基幹システム刷新」の情報が表示されること
 - 参加メンバーに「鈴木 花子（リーダー）」が含まれること
 - 参加メンバーが社員名の昇順で表示されること
-- `/projects/999` にアクセスすると 404 になること
-- 「一覧に戻る」をクリックすると `/projects` に遷移すること
+- `/Project/Details/999` にアクセスすると 404 になること
+- 「一覧に戻る」をクリックすると `/Project` に遷移すること
 
 ---
 

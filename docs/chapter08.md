@@ -47,8 +47,8 @@ src/EmployeeApp/
 
 | メソッド | URL | 説明 |
 |---|---|---|
-| `GET` | `/projects/create` | 空の登録フォームを表示する |
-| `POST` | `/projects/create` | 入力内容を受け取り DB に保存する |
+| `GET` | `/Project/Create` | 空の登録フォームを表示する |
+| `POST` | `/Project/Create` | 入力内容を受け取り DB に保存する |
 
 **フォームの入力項目：**
 
@@ -84,7 +84,7 @@ VALUES (@Name, @StartDate, @EndDate, @Budget)
 RETURNING id
 ```
 
-**リダイレクト先：** 登録完了後は詳細画面（`/projects/details/{id}`）へ遷移すること
+**リダイレクト先：** 登録完了後は詳細画面（`/Project/Details/{id}`）へ遷移すること
 
 **その他の要件：**
 
@@ -92,7 +92,7 @@ RETURNING id
 
 **確認ポイント：**
 
-- `/projects/create` にアクセスするとフォームが表示されること
+- `/Project/Create` にアクセスするとフォームが表示されること
 - すべての項目を正しく入力して送信すると、DB に新しいレコードが追加されること
 - 登録後、追加したプロジェクトの詳細画面に遷移すること
 - プロジェクト名を空のまま送信するとエラーメッセージが表示されること
@@ -107,8 +107,8 @@ RETURNING id
 
 | メソッド | URL | 説明 |
 |---|---|---|
-| `GET` | `/projects/edit/{id}` | 既存データを入力済みの編集フォームを表示する |
-| `POST` | `/projects/edit` | 更新内容を受け取り DB を更新する |
+| `GET` | `/Project/Edit/{id}` | 既存データを入力済みの編集フォームを表示する |
+| `POST` | `/Project/Edit` | 更新内容を受け取り DB を更新する |
 
 **フォームの入力項目：**
 
@@ -132,7 +132,7 @@ SET name = @Name, start_date = @StartDate, end_date = @EndDate, budget = @Budget
 WHERE id = @Id
 ```
 
-**リダイレクト先：** 更新完了後は詳細画面（`/projects/details/{id}`）へ遷移すること
+**リダイレクト先：** 更新完了後は詳細画面（`/Project/Details/{id}`）へ遷移すること
 
 **その他の要件：**
 
@@ -142,11 +142,11 @@ WHERE id = @Id
 
 **確認ポイント：**
 
-- `/projects/edit/1` にアクセスすると「基幹システム刷新」の情報がフォームに表示されること
+- `/Project/Edit/1` にアクセスすると「基幹システム刷新」の情報がフォームに表示されること
 - 内容を変更して送信すると DB が更新されること
 - 更新後、詳細画面に遷移すること
 - バリデーションエラーが発生した場合、フォームに入力内容が保持されたままエラーメッセージが表示されること
-- `/projects/edit/999` にアクセスすると 404 になること
+- `/Project/Edit/999` にアクセスすると 404 になること
 
 ---
 
@@ -156,8 +156,8 @@ WHERE id = @Id
 
 | メソッド | URL | 説明 |
 |---|---|---|
-| `GET` | `/projects/delete/{id}` | 削除対象のプロジェクト情報と確認ボタンを表示する |
-| `POST` | `/projects/delete` | 確認後に DB から削除する |
+| `GET` | `/Project/Delete/{id}` | 削除対象のプロジェクト情報と確認ボタンを表示する |
+| `POST` | `/Project/Delete` | 確認後に DB から削除する |
 
 **削除確認画面の表示内容：**
 
@@ -186,7 +186,7 @@ WHERE id = @id
 DELETE FROM projects WHERE id = @id
 ```
 
-**リダイレクト先：** 削除完了後は一覧画面（`/projects`）へ遷移すること
+**リダイレクト先：** 削除完了後は一覧画面（`/Project`）へ遷移すること
 
 **その他の要件：**
 
@@ -196,11 +196,11 @@ DELETE FROM projects WHERE id = @id
 
 **確認ポイント：**
 
-- `/projects/delete/1` にアクセスすると「基幹システム刷新」の削除確認画面が表示されること
+- `/Project/Delete/1` にアクセスすると「基幹システム刷新」の削除確認画面が表示されること
 - 「削除する」ボタンを押すと DB から該当レコードが削除されること
 - 削除後、一覧画面に遷移し、削除したプロジェクトが表示されないこと
 - 「キャンセル」リンクを押すと詳細画面に戻ること
-- `/projects/delete/999` にアクセスすると 404 になること
+- `/Project/Delete/999` にアクセスすると 404 になること
 
 ---
 

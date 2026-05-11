@@ -18,7 +18,7 @@
 
 ```bash
 git clone <リポジトリのURL>
-cd tokkun-asp-dotnet
+cd tokkun-aspnetcore
 ```
 
 ---

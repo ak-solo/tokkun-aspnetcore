@@ -14,7 +14,7 @@
 ### Controller → Dapper → View のデータの流れ
 
 ```
-ブラウザが /employees にアクセス
+ブラウザが /Employee にアクセス
         │
         ▼
 EmployeeController の Index() が呼ばれる

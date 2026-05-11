@@ -13,7 +13,7 @@
 
 ### なぜ GET で削除してはいけないのか
 
-「`/employees/delete/3` という URL にアクセスするだけで削除できる」という設計は危険です。
+「`/Employee/Delete/3` という URL にアクセスするだけで削除できる」という設計は危険です。
 その理由を整理します。
 
 | 問題 | 説明 |
@@ -32,11 +32,11 @@
 安全な削除フローは次の 3 ステップです。
 
 ```
-① GET /employees/delete/3
+① GET /Employee/Delete/3
    → 削除確認画面を表示（削除はまだしない）
 
 ② 確認画面で「削除」ボタンをクリック
-   → POST /employees/delete（フォーム送信）
+   → POST /Employee/Delete（フォーム送信）
 
 ③ POST アクション
    → DELETE を実行して一覧にリダイレクト（PRG パターン）
@@ -63,7 +63,7 @@ public IActionResult DeleteConfirmed(int id)
 
 **ポイント：**
 
-- `[HttpPost, ActionName("Delete")]` — HTTP POST のみ受け付け、URL は `/employees/delete` のままにする
+- `[HttpPost, ActionName("Delete")]` — HTTP POST のみ受け付け、URL は `/Employee/Delete` のままにする
 - `[ValidateAntiForgeryToken]` — CSRF 攻撃を防ぐ（フォームの `__RequestVerificationToken` と照合）
 - `WHERE id = @id` — 必ず ID で絞り込む。書き忘れると全件削除になるので注意
 
@@ -82,11 +82,11 @@ C# では同じシグネチャのメソッドは定義できません。
 `ActionName("Delete")` で URL とフォームの `asp-action="Delete"` に対応させます。
 
 ```csharp
-// GET: /employees/delete/3 → 確認画面
+// GET: /Employee/Delete/3 → 確認画面
 [HttpGet]
 public IActionResult Delete(int id) { ... }
 
-// POST: /employees/delete → 削除実行
+// POST: /Employee/Delete → 削除実行
 [HttpPost, ActionName("Delete")]
 [ValidateAntiForgeryToken]
 public IActionResult DeleteConfirmed(int id) { ... }
@@ -218,7 +218,7 @@ public IActionResult DeleteConfirmed(int id)
 
 **確認ポイント：**
 - 通常の削除は引き続き動作すること
-- 存在しない ID（例：`/employees/delete/9999`）に POST すると 404 になること
+- 存在しない ID（例：`/Employee/Delete/9999`）に POST すると 404 になること
 
 ---
 
