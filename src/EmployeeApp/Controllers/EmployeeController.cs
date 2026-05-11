@@ -60,4 +60,31 @@ public class EmployeeController : Controller
         if (employee == null) return NotFound();
         return View(employee);
     }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public IActionResult Edit(Employee employee)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(employee);
+        }
+
+        _db.Execute(
+            @"UPDATE employees
+              SET name = @Name, dept_id = @DeptId, salary = @Salary, hire_date = @HireDate
+              WHERE id = @Id",
+            employee);
+        return RedirectToAction(nameof(Details), new { employee.Id });
+    }
+
+    [HttpGet]
+    public IActionResult Delete(int id)
+    {
+        var employee = _db.QueryFirstOrDefault<Employee>(
+            "SELECT * FROM employees WHERE id = @id",
+            new { id });
+        if (employee == null) return NotFound();
+        return View(employee);
+    }
 }
