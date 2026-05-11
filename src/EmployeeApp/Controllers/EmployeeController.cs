@@ -17,7 +17,16 @@ public class EmployeeController : Controller
     public IActionResult Index()
     {
         var employees = _db.Query<Employee>(
-            "SELECT id, name FROM employees ORDER BY id");
+            "SELECT id, name, dept_id, salary, hire_date, manager_id FROM employees ORDER BY hire_date DESC");
         return View(employees);
+    }
+
+    public IActionResult Details(int id)
+    {
+        var employee = _db.QueryFirstOrDefault<Employee>(
+            "SELECT * FROM employees WHERE id = @id",
+            new { id });
+        if (employee == null) return NotFound();
+        return View(employee);
     }
 }

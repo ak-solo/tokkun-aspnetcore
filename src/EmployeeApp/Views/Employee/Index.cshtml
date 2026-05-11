@@ -11,6 +11,11 @@
         <tr>
             <th>ID</th>
             <th>氏名</th>
+            <th>部署 ID</th>
+            <th>給与</th>
+            <th>入社日</th>
+            <th>上司 ID</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -19,6 +24,13 @@
             <tr>
                 <td>@employee.Id</td>
                 <td>@employee.Name</td>
+                <td>@employee.DeptId</td>
+                <td>@employee.Salary</td>
+                <td>@employee.HireDate</td>
+                <td>@employee.ManagerId</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@employee.Id">詳細</a>
+                </td>
             </tr>
         }
     </tbody>
