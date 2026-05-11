@@ -14,8 +14,9 @@ public class EmployeeController : Controller
         _db = db;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(string? keyword)
     {
+        ViewData["Keyword"] = keyword;
         var employees = _db.Query<Employee>(
             "SELECT id, name, dept_id, salary, hire_date, manager_id FROM employees ORDER BY hire_date DESC");
         return View(employees);
@@ -86,5 +87,13 @@ public class EmployeeController : Controller
             new { id });
         if (employee == null) return NotFound();
         return View(employee);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public IActionResult DeleteConfirmed(int id)
+    {
+        _db.Execute("DELETE FROM employees WHERE id = @id", new { id });
+        return RedirectToAction(nameof(Index));
     }
 }
