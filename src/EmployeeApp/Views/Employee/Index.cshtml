@@ -1,28 +1,62 @@
 @model IEnumerable<EmployeeApp.Models.Employee>
+@using System.Linq
 
 @{
     ViewData["Title"] = "社員一覧";
+
+    var currentSortBy  = ViewData["SortBy"]  as string;
+    var currentSortDir = ViewData["SortDir"] as string;
+
+    string NextDir(string col) =>
+        (currentSortBy == col && currentSortDir == "asc") ? "desc" : "asc";
+
+    var count   = Model.Count();
+    var keyword = ViewData["Keyword"] as string;
+    var label   = string.IsNullOrWhiteSpace(keyword) ? $"全 {count} 件" : $"{count} 件見つかりました";
 }
 
 <h1>社員一覧</h1>
 
 <form method="get" class="mb-3">
-    <div class="input-group" style="max-width: 400px;">
-        <input type="text" name="keyword" value="@ViewData["Keyword"]" class="form-control" placeholder="氏名で検索..." />
+    <div class="d-flex gap-2" style="max-width: 600px;">
+        <input type="text" name="keyword" value="@ViewData["Keyword"]"
+               class="form-control" placeholder="氏名で検索..." />
+        <input type="number" name="deptId" value="@ViewData["DeptId"]"
+               class="form-control" style="max-width: 100px;" placeholder="部署ID" />
         <button type="submit" class="btn btn-outline-secondary">検索</button>
     </div>
 </form>
 
 <a asp-action="Create" class="btn btn-primary mb-3">新規登録</a>
 
+<p class="text-muted">@label</p>
+
 <table class="table">
     <thead>
         <tr>
             <th>ID</th>
-            <th>氏名</th>
+            <th>
+                <a asp-action="Index"
+                   asp-route-keyword="@ViewData["Keyword"]"
+                   asp-route-deptId="@ViewData["DeptId"]"
+                   asp-route-sortBy="name"
+                   asp-route-sortDir="@NextDir("name")">氏名</a>
+            </th>
             <th>部署 ID</th>
-            <th>給与</th>
-            <th>入社日</th>
+            <th>
+                <a asp-action="Index"
+                   asp-route-keyword="@ViewData["Keyword"]"
+                   asp-route-deptId="@ViewData["DeptId"]"
+                   asp-route-sortBy="salary"
+                   asp-route-sortDir="@NextDir("salary")">給与</a>
+            </th>
+            <th>
+                <a asp-action="Index"
+                   asp-route-keyword="@ViewData["Keyword"]"
+                   asp-route-deptId="@ViewData["DeptId"]"
+                   asp-route-sortBy="hire_date"
+                   asp-route-sortDir="@NextDir("hire_date")">入社日</a>
+            </th>
             <th>上司 ID</th>
             <th></th>
         </tr>
@@ -39,6 +73,8 @@
                 <td>@employee.ManagerId</td>
                 <td>
                     <a asp-action="Details" asp-route-id="@employee.Id">詳細</a>
+                    <a asp-action="Edit" asp-route-id="@employee.Id">編集</a>
+                    <a asp-action="Delete" asp-route-id="@employee.Id" class="text-danger">削除</a>
                 </td>
             </tr>
         }

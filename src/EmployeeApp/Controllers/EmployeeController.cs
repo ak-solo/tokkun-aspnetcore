@@ -14,11 +14,39 @@ public class EmployeeController : Controller
         _db = db;
     }
 
-    public IActionResult Index(string? keyword)
+    public IActionResult Index(string? keyword, int? deptId, string? sortBy, string? sortDir)
     {
+        var validColumns = new[] { "name", "salary", "hire_date" };
+        var column    = validColumns.Contains(sortBy) ? sortBy : "hire_date";
+        var direction = sortDir == "asc" ? "ASC" : "DESC";
+
+        var sql = @"
+            SELECT id, name, dept_id, salary, hire_date, manager_id
+            FROM employees
+            WHERE 1=1
+        ";
+        var parameters = new DynamicParameters();
+
+        if (!string.IsNullOrWhiteSpace(keyword))
+        {
+            sql += " AND name LIKE @keyword";
+            parameters.Add("keyword", $"%{keyword}%");
+        }
+
+        if (deptId.HasValue)
+        {
+            sql += " AND dept_id = @deptId";
+            parameters.Add("deptId", deptId.Value);
+        }
+
+        sql += $" ORDER BY {column} {direction}";
+
         ViewData["Keyword"] = keyword;
-        var employees = _db.Query<Employee>(
-            "SELECT id, name, dept_id, salary, hire_date, manager_id FROM employees ORDER BY hire_date DESC");
+        ViewData["DeptId"]  = deptId;
+        ViewData["SortBy"]  = column;
+        ViewData["SortDir"] = direction.ToLower();
+
+        var employees = _db.Query<Employee>(sql, parameters);
         return View(employees);
     }
 
