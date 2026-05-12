@@ -32,33 +32,7 @@ cd tokkun-aspnetcore
 
 ---
 
-## 手順 3：PostgreSQL にデータベースとシードデータを投入する
-
-コンテナ起動後、VS Code のターミナル（`` Ctrl + ` ``）を開いて以下を実行します。
-
-```bash
-# データベースを作成する
-PGPASSWORD=postgres createdb -h db -U postgres employeeapp
-
-# テーブルを作成する
-PGPASSWORD=postgres psql -h db -U postgres -d employeeapp -f db/00_schema.sql
-
-# シードデータを投入する
-PGPASSWORD=postgres psql -h db -U postgres -d employeeapp -f db/01_seed.sql
-```
-
-> **PostgreSQL の接続情報**
-> | 項目 | 値 |
-> |------|-----|
-> | ホスト | `db` |
-> | ポート | `5432` |
-> | ユーザー | `postgres` |
-> | パスワード | `postgres` |
-> | データベース | `employeeapp` |
-
----
-
-## 手順 4：アプリケーションを起動する
+## 手順 3：アプリケーションを起動する
 
 ```bash
 cd src/EmployeeApp
@@ -84,10 +58,6 @@ info: Microsoft.Hosting.Lifetime[14]
 ---
 
 ## トラブルシューティング
-
-### `createdb: error: connection to server on socket failed`
-
-PostgreSQL コンテナがまだ起動していない可能性があります。少し待ってから再試行してください。
 
 ### `dotnet run` でエラーが出る
 
