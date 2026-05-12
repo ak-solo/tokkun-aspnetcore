@@ -38,13 +38,13 @@ cd tokkun-aspnetcore
 
 ```bash
 # データベースを作成する
-createdb -h db -U postgres employeeapp
+PGPASSWORD=postgres createdb -h db -U postgres employeeapp
 
 # テーブルを作成する
-psql -h db -U postgres -d employeeapp -f db/00_schema.sql
+PGPASSWORD=postgres psql -h db -U postgres -d employeeapp -f db/00_schema.sql
 
 # シードデータを投入する
-psql -h db -U postgres -d employeeapp -f db/01_seed.sql
+PGPASSWORD=postgres psql -h db -U postgres -d employeeapp -f db/01_seed.sql
 ```
 
 > **PostgreSQL の接続情報**
@@ -73,6 +73,13 @@ info: Microsoft.Hosting.Lifetime[14]
 ```
 
 ブラウザで [http://localhost:5000](http://localhost:5000) を開き、社員一覧が表示されることを確認してください。
+
+> **開発中はホットリロードが便利です**
+> `dotnet run` の代わりに `dotnet watch` を使うと、ファイルを保存するたびにアプリが自動再起動します。
+>
+> ```bash
+> dotnet watch
+> ```
 
 ---
 
