@@ -1,8 +1,8 @@
 {
   "name": "tokkun-asp-dotnet",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/tokkun-aspnetcore",
   "forwardPorts": [5000, 5432],
   "portsAttributes": {
     "5000": {
