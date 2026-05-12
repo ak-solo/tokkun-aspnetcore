@@ -3,6 +3,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    volumes:
+      - ..:/workspaces/tokkun-aspnetcore:cached
     command: sleep infinity
     depends_on:
       - db
