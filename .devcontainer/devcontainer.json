@@ -30,6 +30,9 @@
       }
     }
   },
+  "remoteEnv": {
+    "ConnectionStrings__Default": "Host=db;Port=5432;Database=employeeapp;Username=postgres;Password=postgres"
+  },
   "postCreateCommand": "dotnet restore src/EmployeeApp/EmployeeApp.csproj 2>/dev/null || true",
   "remoteUser": "vscode"
 }
