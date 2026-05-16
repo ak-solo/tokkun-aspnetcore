@@ -1,59 +1,104 @@
 # 環境構築手順
 
 この手順では、学習環境のセットアップを行います。
+環境構築には **2 つの方法** があります。自分の環境に合った方法を選んでください。
+
+| | 方法 A：Dev Container | 方法 B：ローカル .NET SDK |
+|---|---|---|
+| 向いている環境 | Mac / Linux | Windows（メモリが少ない PC でも動きやすい） |
+| .NET SDK のインストール | 不要（コンテナに含まれる） | 必要 |
+| Docker の用途 | アプリ + DB 両方 | DB のみ |
 
 ---
 
-## 前提条件
+## 方法 A：Dev Container を使う
 
-以下がインストール済みであることを確認してください。
+### 必要なもの
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)（Windows / Mac）または Docker Engine（Linux）
 - [Visual Studio Code](https://code.visualstudio.com/)
 - VS Code 拡張機能：[Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 
----
-
-## 手順 1：リポジトリをクローンする
+### 手順 1：リポジトリをクローンする
 
 ```bash
 git clone <リポジトリのURL>
 cd tokkun-aspnetcore
 ```
 
----
-
-## 手順 2：Dev Container を起動する
+### 手順 2：Dev Container を起動する
 
 1. VS Code でリポジトリフォルダを開く
 2. 右下に「**Reopen in Container**」の通知が表示されたらクリック
    - 表示されない場合は `F1` キーを押してコマンドパレットを開き、「**Dev Containers: Reopen in Container**」を選択
 3. 初回はコンテナのビルドに数分かかります。完了するまで待ってください
 
----
+### 手順 3：アプリケーションを起動する
 
-## 手順 3：アプリケーションを起動する
+VS Code のターミナルで以下を実行します。
 
 ```bash
 cd src/EmployeeApp
 dotnet run
 ```
 
-ターミナルに以下のような表示が出れば起動成功です。
+ブラウザで [http://localhost:5000](http://localhost:5000) を開き、社員一覧が表示されれば完了です。
 
+---
+
+## 方法 B：ローカル .NET SDK + Docker（DB のみ）
+
+Windows でメモリ消費を抑えたい場合や、Dev Container の動作が重い場合はこちらを使ってください。
+
+### 必要なもの
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [Visual Studio Code](https://code.visualstudio.com/)
+
+### 手順 1：リポジトリをクローンする
+
+```bash
+git clone <リポジトリのURL>
+cd tokkun-aspnetcore
 ```
-info: Microsoft.Hosting.Lifetime[14]
-      Now listening on: http://localhost:5000
+
+### 手順 2：Docker で DB を起動する
+
+プロジェクトのルートフォルダで以下を実行します。
+
+```bash
+docker compose up -d
 ```
 
-ブラウザで [http://localhost:5000](http://localhost:5000) を開き、社員一覧が表示されることを確認してください。
+PostgreSQL コンテナが起動し、スキーマとサンプルデータが自動で投入されます。
 
-> **開発中はホットリロードが便利です**
-> `dotnet run` の代わりに `dotnet watch` を使うと、ファイルを保存するたびにアプリが自動再起動します。
+> **停止するとき**
 >
 > ```bash
-> dotnet watch
+> docker compose down
 > ```
+>
+> データを消してリセットしたい場合は `docker compose down -v` を実行してください。
+
+### 手順 3：アプリケーションを起動する
+
+```bash
+cd src/EmployeeApp
+dotnet run
+```
+
+ブラウザで [http://localhost:5000](http://localhost:5000) を開き、社員一覧が表示されれば完了です。
+
+---
+
+## 共通：ホットリロードを使う
+
+`dotnet run` の代わりに `dotnet watch` を使うと、ファイルを保存するたびにアプリが自動再起動します。
+
+```bash
+dotnet watch
+```
 
 ---
 
@@ -69,11 +114,23 @@ dotnet restore
 
 ### ポート 5000 がすでに使われている
 
-他のプロセスがポートを占有しています。以下で別のポートを指定して起動できます。
-
 ```bash
 dotnet run --urls "http://localhost:5001"
 ```
+
+### 方法 B で DB に接続できない（`Connection refused`）
+
+Docker Desktop が起動しているか確認してください。起動済みであれば、以下でコンテナの状態を確認します。
+
+```bash
+docker compose ps
+```
+
+`db` サービスが `running` になっていない場合は、`docker compose up -d` を再実行してください。
+
+### 方法 A と方法 B を同時に起動しない
+
+どちらの方法も PostgreSQL のポート 5432 を使います。両方を同時に起動するとポートが競合してエラーになります。
 
 ---
 
