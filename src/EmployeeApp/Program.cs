@@ -1,5 +1,8 @@
+using Dapper;
 using Npgsql;
 using System.Data;
+
+DefaultTypeMap.MatchNamesWithUnderscores = true;
 
 var builder = WebApplication.CreateBuilder(args);
 
