@@ -147,7 +147,8 @@ _db.Execute(
 
 ## スターターコードの確認
 
-`dotnet run` でアプリを起動し、社員一覧から任意の社員の「詳細」→「編集」リンクをクリックすると編集フォームが表示されます。
+`dotnet run` でアプリを起動し、ブラウザで `/Employee/Edit/1` に直接アクセスすると編集フォームが表示されます。
+（詳細画面への「編集」リンクはまだありません。この章の最後の問題で追加します。）
 
 ```
 社員編集
@@ -166,6 +167,7 @@ POST を受け取るアクションがまだ実装されていないためです
 - `Models/Employee.cs` — バリデーション属性を追加する
 - `Views/Employee/Edit.cshtml` — タグヘルパーとエラー表示を追加する
 - `Controllers/EmployeeController.cs` — POST アクションを実装する
+- `Views/Employee/Details.cshtml` — 詳細画面に「編集」リンクを追加する
 
 ---
 
