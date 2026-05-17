@@ -143,7 +143,8 @@ ViewData["SortDir"] = direction.ToLower();
 ## スターターコードの確認
 
 `dotnet run` でアプリを起動し、`/Employee` にアクセスします。
-一覧の上部に検索フォームが表示されています。
+
+ch01〜05 の演習で追加した列・リンクに加え、一覧の上部に検索フォームがあらかじめ追加されています。
 
 ```
 社員一覧
@@ -152,11 +153,12 @@ ViewData["SortDir"] = direction.ToLower();
 
 [新規登録]
 
-ID  氏名  部署ID  給与  入社日  上司ID
+ID  氏名  部署ID  給与  入社日  上司ID  操作
 ────────────────────────────────
 ```
 
 現時点では検索フォームに氏名を入力して「検索」しても、絞り込みは動作しません（全件が表示されたままになります）。
+`EmployeeController.cs` の `Index` アクションが `keyword` 引数を受け取っているものの、SQL には反映していないためです。
 
 この章の練習問題では：
 - `Controllers/EmployeeController.cs` — 動的 WHERE と ORDER BY を実装する
