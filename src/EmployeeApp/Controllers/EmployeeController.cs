@@ -20,4 +20,13 @@ public class EmployeeController : Controller
             "SELECT id, name FROM employees ORDER BY id");
         return View(employees);
     }
+
+    public IActionResult Details(int id)
+    {
+        var employee = _db.QueryFirstOrDefault<Employee>(
+            "SELECT * FROM employees WHERE id = @id",
+            new { id });
+        if (employee == null) return NotFound();
+        return View(employee);
+    }
 }
