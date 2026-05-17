@@ -155,7 +155,8 @@ return RedirectToAction(nameof(Details), new { id });
 
 ## スターターコードの確認
 
-`dotnet run` でアプリを起動し、一覧画面の右上「新規登録」リンク（または `/Employee/Create`）にアクセスすると登録フォームが表示されます。
+`dotnet run` でアプリを起動し、ブラウザで `/Employee/Create` に直接アクセスすると登録フォームが表示されます。
+（一覧画面への「新規登録」リンクはまだありません。この章の最後の問題で追加します。）
 
 ```
 社員登録
@@ -173,6 +174,7 @@ POST を受け取るアクションがまだ実装されていないためです
 この章の練習問題では：
 - `Views/Employee/Create.cshtml` — フォームにフィールドを追加する
 - `Controllers/EmployeeController.cs` — POST アクションを実装する
+- `Views/Employee/Index.cshtml` — 一覧に「新規登録」リンクを追加する
 
 ---
 
