@@ -35,4 +35,24 @@ public class EmployeeController : Controller
     {
         return View();
     }
+
+    [HttpGet]
+    public IActionResult Edit(int id)
+    {
+        var employee = _db.QueryFirstOrDefault<Employee>(
+            "SELECT * FROM employees WHERE id = @id",
+            new { id });
+        if (employee == null) return NotFound();
+        return View(employee);
+    }
+
+    [HttpGet]
+    public IActionResult Delete(int id)
+    {
+        var employee = _db.QueryFirstOrDefault<Employee>(
+            "SELECT * FROM employees WHERE id = @id",
+            new { id });
+        if (employee == null) return NotFound();
+        return View(employee);
+    }
 }

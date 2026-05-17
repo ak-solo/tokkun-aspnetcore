@@ -1,0 +1,23 @@
+@model EmployeeApp.Models.Employee
+
+@{
+    ViewData["Title"] = "社員削除";
+}
+
+<h1>社員削除</h1>
+
+<p>以下の社員を削除しますか？</p>
+
+<dl class="row">
+    <dt class="col-sm-2">ID</dt>
+    <dd class="col-sm-10">@Model.Id</dd>
+
+    <dt class="col-sm-2">氏名</dt>
+    <dd class="col-sm-10">@Model.Name</dd>
+</dl>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">削除</button>
+    <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-secondary">キャンセル</a>
+</form>
