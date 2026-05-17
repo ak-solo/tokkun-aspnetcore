@@ -14,8 +14,9 @@ public class EmployeeController : Controller
         _db = db;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(string? keyword)
     {
+        ViewData["Keyword"] = keyword;
         var employees = _db.Query<Employee>(
             "SELECT id, name FROM employees ORDER BY id");
         return View(employees);
