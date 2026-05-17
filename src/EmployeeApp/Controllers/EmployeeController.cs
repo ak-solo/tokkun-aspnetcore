@@ -29,4 +29,10 @@ public class EmployeeController : Controller
         if (employee == null) return NotFound();
         return View(employee);
     }
+
+    [HttpGet]
+    public IActionResult Create()
+    {
+        return View();
+    }
 }
