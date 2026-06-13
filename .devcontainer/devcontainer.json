@@ -20,7 +20,8 @@
         "ms-dotnettools.csdevkit",
         "ms-dotnettools.csharp",
         "ms-dotnettools.vscode-dotnet-runtime",
-        "formulahendry.dotnet-test-explorer"
+        "formulahendry.dotnet-test-explorer",
+        "shd101wyy.markdown-preview-enhanced"
       ],
       "settings": {
         "editor.formatOnSave": true,
