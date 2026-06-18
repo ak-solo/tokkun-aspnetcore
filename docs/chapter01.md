@@ -13,26 +13,7 @@
 
 ### Controller → Dapper → View のデータの流れ
 
-```
-ブラウザが /Employee にアクセス
-        │
-        ▼
-EmployeeController の Index() が呼ばれる
-        │
-        │  _db.Query<Employee>("SELECT ...")
-        ▼
-PostgreSQL が結果を返す
-        │
-        │  IEnumerable<Employee> が返ってくる
-        ▼
-return View(employees) でViewにデータを渡す
-        │
-        ▼
-Views/Employee/Index.cshtml が HTML を生成する
-        │
-        ▼
-ブラウザに HTML が届く
-```
+![Controller → Dapper → View のデータの流れ](images/ch01-data-flow.svg)
 
 ### Controller のコード
 
@@ -56,14 +37,7 @@ public IActionResult Index()
 
 Dapper は SQL の結果を自動的に C# オブジェクトに変換します。
 
-```
-DBの結果                          Employee オブジェクト
-┌────┬──────────┐               ┌────────────────────┐
-│ id │   name   │               │ Id   = 1           │
-├────┼──────────┤  ──────────►  │ Name = "田中 太郎"  │
-│  1 │ 田中 太郎 │               └────────────────────┘
-└────┴──────────┘
-```
+![SQL 結果から Employee オブジェクトへの変換](images/ch01-sql-mapping.svg)
 
 列名と C# のプロパティ名が自動的に対応します（大文字・小文字は区別しません）。
 **SELECT に書いた列だけ**が C# オブジェクトに入ります。書かなかった列は `null` のままです。

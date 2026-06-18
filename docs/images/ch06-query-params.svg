@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="530" height="128" viewBox="0 0 530 128">
+  <defs>
+    <marker id="arr" markerWidth="6" markerHeight="8" refX="3" refY="7" orient="auto">
+      <polygon points="0 0, 6 0, 3 8" fill="#555"/>
+    </marker>
+  </defs>
+  <!-- URL ボックス -->
+  <rect x="10" y="10" width="510" height="44" rx="4" fill="#f5f5f5" stroke="#ccc" stroke-width="1.5"/>
+  <!-- URL テキスト（parts colored） -->
+  <text y="34" font-family="Courier New, monospace" font-size="14" dominant-baseline="middle">
+    <tspan x="24" fill="#333">/Employee</tspan>
+    <tspan fill="#b85450" font-weight="bold">?</tspan>
+    <tspan fill="#333">keyword</tspan>
+    <tspan fill="#6c8ebf" font-weight="bold">=</tspan>
+    <tspan fill="#333">田中</tspan>
+    <tspan fill="#d6b656" font-weight="bold">&amp;</tspan>
+    <tspan fill="#333">sortBy=salary</tspan>
+    <tspan fill="#d6b656" font-weight="bold">&amp;</tspan>
+    <tspan fill="#333">sortDir=desc</tspan>
+  </text>
+  <!-- アノテーション矢印 (下向き) -->
+  <!-- ? の位置 x≈140 -->
+  <line x1="140" y1="56" x2="140" y2="80" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <!-- = の位置 x≈210 -->
+  <line x1="210" y1="56" x2="210" y2="80" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <!-- & の位置 x≈355 -->
+  <line x1="355" y1="56" x2="355" y2="80" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <!-- ラベル -->
+  <text x="96" y="100" font-family="Arial, sans-serif" font-size="11" fill="#b85450" text-anchor="middle" font-weight="bold">区切り文字</text>
+  <text x="235" y="100" font-family="Arial, sans-serif" font-size="11" fill="#6c8ebf" text-anchor="middle" font-weight="bold">パラメータ名=値</text>
+  <text x="404" y="100" font-family="Arial, sans-serif" font-size="11" fill="#d6b656" text-anchor="middle" font-weight="bold">複数は &amp; でつなぐ</text>
+  <!-- 補助線 -->
+  <text x="96" y="115" font-family="Arial, sans-serif" font-size="9" fill="#aaa" text-anchor="middle">（? から始まる）</text>
+  <text x="235" y="115" font-family="Arial, sans-serif" font-size="9" fill="#aaa" text-anchor="middle">（key=value の形式）</text>
+</svg>

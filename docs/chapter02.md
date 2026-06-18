@@ -16,18 +16,7 @@
 
 ブラウザで `/Employee/Details/3` にアクセスすると、何が起きているのでしょうか。
 
-```
-ブラウザが /Employee/Details/3 にアクセス
-          │
-          │  ASP.NET Core のルーティング
-          ▼
-  {controller} = Employee  →  EmployeeController
-  {action}     = Details   →  Details() メソッド
-  {id}         = 3         →  int id パラメータに 3 が入る
-          │
-          ▼
-  EmployeeController.Details(int id = 3) が呼ばれる
-```
+![URL ルーティングの仕組み](images/ch02-routing.svg)
 
 ルーティングのパターンは `Program.cs` に定義されています。
 
@@ -105,13 +94,7 @@ ch01 の一覧では `IEnumerable<Employee>`（リスト）でしたが、詳細
 
 **`@Model.Id`**、**`@Model.Name`** — Controller が `View(employee)` で渡した `employee` オブジェクトのプロパティを表示します。
 
-```
-Controller                        View
-──────────────────────────        ─────────────────────────────
-return View(employee);    ──►     @model Employee の Model
-                                  @Model.Id     → employee.Id
-                                  @Model.Name   → employee.Name
-```
+![Controller から View へのデータの受け渡し](images/ch02-view-mapping.svg)
 
 ### リンクの仕組み（一覧 → 詳細）
 

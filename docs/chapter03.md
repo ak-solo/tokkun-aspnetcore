@@ -74,13 +74,7 @@ public IActionResult Create(Employee employee)
 
 **引数 `Employee employee`** — フォームの各フィールドの値が `Employee` オブジェクトに自動的にマッピングされます（**モデルバインディング**）。
 
-```
-フォームフィールド      Employee プロパティ
-──────────────         ──────────────────
-name="name"     ──►   employee.Name
-name="salary"   ──►   employee.Salary
-name="hire_date" ──►  employee.HireDate
-```
+![フォームフィールドと Employee プロパティの対応](images/ch03-model-binding.svg)
 
 ASP.NET Core のモデルバインディングはフィールド名の大文字・小文字を区別しません。
 
@@ -90,28 +84,11 @@ ASP.NET Core のモデルバインディングはフィールド名の大文字�
 
 登録処理が完了したあと、そのまま View を返してしまうと問題が起きます。
 
-```
-❌ PRG なし（NG）
-────────────────────────────────────────
-ブラウザ → POST /Employee/Create → Controller
-                                    INSERT 実行
-                               ◄── return View() ← HTML を直接返す
-ここでブラウザをリロードすると...
-ブラウザ → 「フォームを再送信しますか？」 → 同じ INSERT が再実行される！
-```
+![PRG パターンなし（問題あり）](images/ch03-prg-ng.svg)
 
 これを防ぐために **PRG パターン** を使います。
 
-```
-✅ PRG あり（OK）
-────────────────────────────────────────
-ブラウザ → POST /Employee/Create → Controller
-                                    INSERT 実行
-                               ◄── return RedirectToAction("Details", new { id })
-ブラウザ → GET /Employee/Details/5 （リダイレクト先へ移動）
-                               ◄── return View() ← HTML を返す
-ここでリロードしても GET リクエストになるので INSERT は再実行されない
-```
+![PRG パターンあり（正しい実装）](images/ch03-prg-ok.svg)
 
 **`return RedirectToAction(nameof(Details), new { id })`** — コントローラーの別のアクションへリダイレクトします。ブラウザには HTTP 302 が返され、ブラウザが自動的に指定した URL へ GET リクエストを送ります。
 
