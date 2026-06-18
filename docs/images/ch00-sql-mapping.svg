@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="152" viewBox="0 0 520 152">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#333"/>
+    </marker>
+  </defs>
+  <!-- ===== 左テーブル: DBの結果 ===== -->
+  <text x="105" y="22" font-family="Arial, sans-serif" font-size="11" fill="#777" text-anchor="middle">DBの結果</text>
+  <!-- 外枠 -->
+  <rect x="10" y="30" width="200" height="108" rx="2" fill="white" stroke="#9673a6" stroke-width="1.5"/>
+  <!-- ヘッダー背景 -->
+  <rect x="10" y="30" width="200" height="30" rx="2" fill="#e1d5e7" stroke="#9673a6" stroke-width="1.5"/>
+  <!-- 列区切り -->
+  <line x1="80" y1="30" x2="80" y2="138" stroke="#9673a6" stroke-width="1"/>
+  <!-- ヘッダー横区切り -->
+  <line x1="10" y1="60" x2="210" y2="60" stroke="#9673a6" stroke-width="1"/>
+  <!-- ヘッダーテキスト -->
+  <text x="45" y="45" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle" dominant-baseline="middle">id</text>
+  <text x="145" y="45" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle" dominant-baseline="middle">name</text>
+  <!-- データ行 -->
+  <text x="45" y="99" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">1</text>
+  <text x="145" y="99" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">田中 太郎</text>
+
+  <!-- 矢印 -->
+  <line x1="213" y1="84" x2="297" y2="84" stroke="#333" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- ===== 右ボックス: C# のオブジェクト ===== -->
+  <text x="405" y="22" font-family="Arial, sans-serif" font-size="11" fill="#777" text-anchor="middle">C# のオブジェクト</text>
+  <rect x="300" y="30" width="210" height="108" rx="4" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+  <text x="405" y="58" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#333" text-anchor="middle" dominant-baseline="middle">Employee</text>
+  <line x1="300" y1="70" x2="510" y2="70" stroke="#82b366" stroke-width="1"/>
+  <text x="318" y="90" font-family="Courier New, monospace" font-size="11" fill="#333" dominant-baseline="middle">Id   = 1</text>
+  <text x="318" y="113" font-family="Courier New, monospace" font-size="11" fill="#333" dominant-baseline="middle">Name = "田中 太郎"</text>
+</svg>

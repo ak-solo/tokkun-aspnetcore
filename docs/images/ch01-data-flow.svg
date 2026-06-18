@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="415" viewBox="0 0 480 415">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#555"/>
+    </marker>
+  </defs>
+  <!-- ブラウザ (top) -->
+  <rect x="130" y="15" width="220" height="40" rx="20" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+  <text x="240" y="35" font-family="Arial, sans-serif" font-size="12" fill="#333" text-anchor="middle" dominant-baseline="middle">ブラウザが /Employee にアクセス</text>
+  <!-- Arrow 1 -->
+  <line x1="240" y1="57" x2="240" y2="87" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <!-- Controller -->
+  <rect x="40" y="89" width="400" height="50" rx="4" fill="#d5e8d4" stroke="#82b366" stroke-width="1.5"/>
+  <text x="240" y="114" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333" text-anchor="middle" dominant-baseline="middle">EmployeeController の Index() が呼ばれる</text>
+  <!-- Arrow 2 -->
+  <line x1="240" y1="141" x2="240" y2="179" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="248" y="155" font-family="Arial, sans-serif" font-size="10" fill="#555" text-anchor="start">_db.Query&lt;Employee&gt;("SELECT ...")</text>
+  <!-- PostgreSQL -->
+  <rect x="40" y="181" width="400" height="48" rx="4" fill="#e1d5e7" stroke="#9673a6" stroke-width="1.5"/>
+  <text x="240" y="205" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333" text-anchor="middle" dominant-baseline="middle">PostgreSQL が結果を返す</text>
+  <!-- Arrow 3 -->
+  <line x1="240" y1="231" x2="240" y2="265" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="248" y="250" font-family="Arial, sans-serif" font-size="10" fill="#555" text-anchor="start">IEnumerable&lt;Employee&gt; が返ってくる</text>
+  <!-- View -->
+  <rect x="40" y="267" width="400" height="58" rx="4" fill="#f8cecc" stroke="#b85450" stroke-width="1.5"/>
+  <text x="240" y="290" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333" text-anchor="middle" dominant-baseline="middle">Views/Employee/Index.cshtml</text>
+  <text x="240" y="309" font-family="Arial, sans-serif" font-size="11" fill="#555" text-anchor="middle" dominant-baseline="middle">が HTML を生成する</text>
+  <!-- Arrow 4 -->
+  <line x1="240" y1="327" x2="240" y2="357" stroke="#555" stroke-width="1.5" marker-end="url(#arr)"/>
+  <!-- ブラウザ (bottom) -->
+  <rect x="130" y="359" width="220" height="40" rx="20" fill="#dae8fc" stroke="#6c8ebf" stroke-width="1.5"/>
+  <text x="240" y="379" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#333" text-anchor="middle" dominant-baseline="middle">ブラウザに HTML が届く</text>
+</svg>

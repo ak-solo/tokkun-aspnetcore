@@ -15,11 +15,7 @@
 
 URL の `?` 以降の部分を**クエリパラメータ**（クエリ文字列）といいます。
 
-```
-/Employee?keyword=田中&sortBy=salary&sortDir=desc
-         ↑                ↑              ↑
-    区切り文字         パラメータ名=値   複数は & でつなぐ
-```
+![クエリパラメータの URL 構造](images/ch06-query-params.svg)
 
 ブラウザのフォームで `method="get"` を使うと、入力値が自動的にクエリパラメータとして URL に付加されます。
 
